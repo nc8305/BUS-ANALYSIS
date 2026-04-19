@@ -1,0 +1,104 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+
+# Virtual Environment
+.venv/
+venv/
+ENV/
+env/
+.env
+.venv
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+desktop.ini
+
+# Logs
+*.log
+logs/
+
+# Big Data Files - QUAN TRỌNG!
+# Raw data files (quá lớn để commit)
+data/raw_*.csv
+data/*.csv
+!data/samples/
+# Giữ sample files nhưng loại bỏ large files
+data/samples/*.csv
+
+# Docker volumes & temp files
+docker-compose.override.yml
+.docker/
+volumes/
+
+# Kafka & Hadoop data
+kafka-logs/
+zookeeper/
+hadoop-data/
+spark-warehouse/
+
+# Database
+*.db
+*.sqlite3
+pgdata/
+
+# Jupyter Notebooks checkpoints
+.ipynb_checkpoints/
+
+# pytest
+.pytest_cache/
+.coverage
+htmlcov/
+
+# mypy
+.mypy_cache/
+.dmypy.json
+dmypy.json
+
+# Environments
+.env.local
+.env.development
+.env.test
+.env.production
+
+# Project specific
+config/secrets.yml
+config/local_*.yml
+temp/
+tmp/
+
+# Git lock files
+*.lock
+data/

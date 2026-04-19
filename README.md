@@ -62,7 +62,7 @@ Hệ thống **Big Data Pipeline** xử lý dữ liệu GPS xe buýt theo kiến
 | Storage        | Hadoop HDFS  | 3.2.1   | 9870 | Distributed storage       |
 | Processing     | Apache Spark | 3.5.0   | 8082 | Batch & Stream processing |
 | Database       | PostgreSQL   | 15      | 5432 | Serving layer             |
-| Visualization  | Grafana      | 10.2.0  | 3000 | Real-time dashboard       |
+| Visualization  | Grafana      | 10.2.0  | 3001 | Real-time dashboard       |
 | DB Admin       | pgAdmin      | 4       | 5050 | Database management       |
 | Coordination   | Zookeeper    | 7.4.0   | 2181 | Kafka coordination        |
 
@@ -71,7 +71,7 @@ Hệ thống **Big Data Pipeline** xử lý dữ liệu GPS xe buýt theo kiến
 ## 📁 Project Structure
 
 ```
-first_project/
+Bus-GPS/
 ├── docker-compose.yml          # Docker infrastructure
 ├── hadoop.env                  # Hadoop configuration
 ├── requirements.txt            # Python dependencies
@@ -124,9 +124,8 @@ first_project/
 ### 2. Clone & Setup
 
 ```bash
-git clone https://github.com/AvechBaymax/Big-data-Assignment.git
-cd Big-data-Assignment
-git checkout lambda_architectur
+git clone https://github.com/nc8305/Bus-GPS.git
+cd Bus-GPS
 ```
 
 ### 3. Start Infrastructure
@@ -177,9 +176,17 @@ python src/kafka/producer.py data/samples/sample_medium_test.csv 50000
 python src/kafka/producer.py data/raw_2025-04-01.csv
 ```
 
-### 6. View Dashboard
+### 6. Run Batch Layer (Tổng hợp cuối ngày)
 
-Open Grafana: http://localhost:3000
+```bash
+# Chạy Spark batch để tổng hợp dữ liệu theo ngày
+# Thay 2025-03-23 bằng ngày có trong file CSV của bạn
+python src/spark/batch_layer.py data/raw_2025-04-01.csv 2025-03-23
+```
+
+### 7. View Dashboard
+
+Open Grafana: http://localhost:3001
 
 - **Username**: admin
 - **Password**: admin123
@@ -252,7 +259,7 @@ geo_hotspots (
 
 | Service       | URL                   | Credentials             |
 | ------------- | --------------------- | ----------------------- |
-| Grafana       | http://localhost:3000 | admin / admin123        |
+| Grafana       | http://localhost:3001 | admin / admin123        |
 | pgAdmin       | http://localhost:5050 | admin@admin.com / admin |
 | Spark Master  | http://localhost:8082 | -                       |
 | HDFS Namenode | http://localhost:9870 | -                       |
@@ -309,13 +316,6 @@ docker-compose down
 # Stop and remove volumes (clean reset)
 docker-compose down -v
 ```
-
----
-
-## 👥 Authors
-
-- **Team**: Big Data Assignment - HCMUT
-
 ---
 
 ## 📝 License
